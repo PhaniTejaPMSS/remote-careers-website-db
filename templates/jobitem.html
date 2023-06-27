@@ -6,11 +6,10 @@
     <div>
       <b>Location : </b>{{job['location']}}
     </div>
-    {% if 'salary' in job %}
-      <div>
-        <b>Salary   : </b>{{job['salary']}}
-      </div>
-    {% endif %}
+    <div>
+      <b>Salary   : </b>{{job['currency']}} {{job['salary']}}
+    </div>
+    
   </div>
   
   <div class="col-2" style="margin:auto; justify-content:center">
