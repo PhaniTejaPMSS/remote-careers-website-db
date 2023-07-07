@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 import os
 
 # print(sqlalchemy.__version__)
@@ -19,3 +19,14 @@ engine = create_engine(db_conn_str,
 #     result_dict.append(dict(row))
 
 #   print(result.all())
+
+
+def load_a_job_from_db(id_of_click):
+  with engine.connect() as conn:
+    query = text("SELECT * FROM jobs where id=:val").bindparams( val=id_of_click)
+    result = conn.execute(query)
+    rows = result.fetchall()
+    if len(rows) == 0:
+      return None
+    else:
+      return rows[0]
